@@ -1,0 +1,10 @@
+../root/
+# Environment variables and API keys
+.env
+*.env
+.venv
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
