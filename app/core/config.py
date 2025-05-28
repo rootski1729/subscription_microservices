@@ -1,15 +1,18 @@
-from pydantic import BaseSettings, Field
+from pydantic_settings import BaseSettings
+from pydantic import Field
 
 class Settings(BaseSettings):
-    DATABASE_URL: str = Field(..., env="DATABASE_URL")
-    SECRET_KEY: str = Field(..., env="SECRET_KEY")
-    ALGORITHM: str = Field("HS256", env="ALGORITHM")
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = Field(..., env="ACCESS_TOKEN_EXPIRE_MINUTES")
-    REDIS_URL: str = Field(..., env="REDIS_URL")
+    DATABASE_URL: str
+    SECRET_KEY: str
+    ALGORITHM: str
+    ACCESS_TOKEN_EXPIRE_MINUTES: int
+    REDIS_URL: str
     
-    class config:
+    API_V1_STR: str = Field("/api/v1", description="API prefix path")
+
+    class Config:
         env_file = ".env"
-        env_file_encoding = "utf-8"
+
         
 settings = Settings()
     
